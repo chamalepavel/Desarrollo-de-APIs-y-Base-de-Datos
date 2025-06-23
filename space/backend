@@ -1,0 +1,20 @@
+const Space = require("../models/Space");
+
+exports.getSpaces = async (req, res) => {
+  try {
+    const spaces = await Space.find();
+    res.json(spaces);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
+exports.createSpace = async (req, res) => {
+  try {
+    const newSpace = new Space(req.body);
+    await newSpace.save();
+    res.status(201).json(newSpace);
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+};
