@@ -1,0 +1,9 @@
+const express = require("express");
+const { getSpaces, createSpace } = require("../controllers/spaceController");
+
+const router = express.Router();
+
+router.get("/", getSpaces);
+router.post("/", createSpace);
+
+module.exports = router;
